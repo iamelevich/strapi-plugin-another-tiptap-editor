@@ -1,0 +1,16 @@
+{
+  "plugin.description.long": "Replace build-in editor with TipTap",
+  "plugin.description.short": "Replace build-in editor with TipTap",
+  "settings": {
+    "label": "Settings",
+    "section-label": "Another Tiptap Editor plugin"
+  },
+  "notification": {
+    "error": {
+      "getSettings": "Failed to get Wysiwyg editor settings"
+    }
+  },
+  "error": {
+    "requestFailed": "Request failed"
+  }
+}
