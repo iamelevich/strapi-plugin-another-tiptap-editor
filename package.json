@@ -22,7 +22,6 @@
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.3.5"
   },
-
   "scripts": {
     "prepare": "husky install",
     "build": "tsc",
@@ -39,7 +38,7 @@
     "@strapi/eslint-config": "~0.1.2",
     "@types/koa": "~2.13.5",
     "eslint": "~8.23.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "~2.7.1",
     "prettier-plugin-packagejson": "~2.2.18",
