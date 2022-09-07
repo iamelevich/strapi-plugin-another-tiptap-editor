@@ -24,6 +24,7 @@
   },
 
   "scripts": {
+    "prepare": "husky install",
     "build": "tsc",
     "precommit": "lint-staged",
     "develop": "tsc -w"
