@@ -2,49 +2,11 @@
   "name": "@iamelevich/strapi-plugin-another-tiptap-editor",
   "version": "0.0.1",
   "description": "Plugin for Strapi, that let use Tiptap instead of build-in Strapi editor",
-  "strapi": {
-    "name": "strapi-plugin-another-tiptap-editor",
-    "displayName": "Strapi Another TipTap Editor",
-    "description": "Use Tiptap instead of build-in Strapi editor",
-    "kind": "plugin"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.19.0",
-    "@babel/eslint-parser": "~7.18.9",
-    "@babel/preset-react": "~7.18.6",
-    "@strapi/eslint-config": "~0.1.2",
-    "@types/koa": "~2.13.5",
-    "eslint": "~8.23.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "~2.7.1",
-    "prettier-plugin-packagejson": "~2.2.18",
-    "typescript": "4.6.3"
-  },
-  "author": {
-    "name": "Ilya Amelevich <ilya.amelevich@gmail.com>"
-  },
-  "maintainers": [
-    {
-      "name": "Ilya Amelevich <ilya.amelevich@gmail.com>"
-    }
-  ],
-  "engines": {
-    "node": ">=14.19.1 <=16.x.x",
-    "npm": ">=6.0.0"
-  },
-  "scripts": {
-    "develop": "tsc -w",
-    "build": "tsc",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "package.json": ["prettier-package-json --write", "git add"]
-  },
   "license": "MIT",
-  "peerDependencies": {
-    "@strapi/strapi": "^4.0.0"
-  },
+  "author": "Ilya Amelevich <ilya.amelevich@gmail.com>",
+  "maintainers": [
+    "Ilya Amelevich <ilya.amelevich@gmail.com>"
+  ],
   "dependencies": {
     "@strapi/design-system": "^1.2.2",
     "@strapi/helper-plugin": "^4.3.8",
@@ -59,5 +21,43 @@
     "react-is": "^18.2.0",
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.3.5"
+  },
+
+  "scripts": {
+    "build": "tsc",
+    "precommit": "lint-staged",
+    "develop": "tsc -w"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/eslint-parser": "~7.18.9",
+    "@babel/preset-react": "~7.18.6",
+    "@strapi/eslint-config": "~0.1.2",
+    "@types/koa": "~2.13.5",
+    "eslint": "~8.23.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "~2.7.1",
+    "prettier-plugin-packagejson": "~2.2.18",
+    "typescript": "4.6.3"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "lint-staged": {
+    "package.json": [
+      "prettier-package-json --write",
+      "git add"
+    ]
+  },
+  "strapi": {
+    "name": "strapi-plugin-another-tiptap-editor",
+    "displayName": "Strapi Another TipTap Editor",
+    "description": "Use Tiptap instead of build-in Strapi editor",
+    "kind": "plugin"
   }
 }
