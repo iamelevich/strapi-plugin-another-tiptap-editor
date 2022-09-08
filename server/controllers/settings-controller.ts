@@ -1,10 +1,9 @@
 import type { Strapi } from '@strapi/strapi';
-import type { Context } from 'koa';
 import pluginId from '../../common/pluginId';
 import { defaultSettings, PluginSettings } from '../../common/settings';
 
 export default ({ strapi }: { strapi: Strapi }) => ({
-  async index(ctx: Context) {
+  async index(ctx) {
     const savedSettings: PluginSettings | null = await strapi
       .store({ type: 'plugin', name: pluginId, key: 'settings' })
       .get();
@@ -14,7 +13,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
       ctx.send(defaultSettings);
     }
   },
-  async updateSettings(ctx: Context) {
+  async updateSettings(ctx) {
     const newSettings: PluginSettings = ctx.request.body;
     await strapi
       .store({ type: 'plugin', name: pluginId, key: 'settings' })
