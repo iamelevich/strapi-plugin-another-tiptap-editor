@@ -1,39 +1,57 @@
 import styled from 'styled-components';
+import { rgba } from 'polished';
 import { Box } from '@strapi/design-system/Box';
 
 export default styled(Box)`
   ${({ theme }) => {
     // Uncomment this for debugging styles
-    console.log(theme);
+    // console.log(theme);
   }}
+
+  border: 1px solid ${({ theme }) => theme.colors.primary200};
+  border-radius: ${({ theme }) => theme.borderRadius};
+
+  &.focused {
+    outline: 2px solid ${({ theme }) => theme.colors.primary600};
+    border: 1px solid ${({ theme }) => theme.colors.primary600};
+  }
+
   .toolbox {
     .is-active {
       background: ${({ theme }) => theme.colors.primary200};
       color: ${({ theme }) => theme.colors.neutral0};
     }
   }
+
   .ProseMirror {
+    padding: 0 ${({ theme }) => theme.spaces[2]};
     outline: none;
     line-height: 1.25rem;
     color: ${({ theme }) => theme.colors.neutral800};
     min-height: 80px;
+
     > * + * {
       margin-top: 0.75em;
     }
-    .ProseMirror-selectednode {
+
+    &-selectednode {
       border: 5px solid ${({ theme }) => theme.colors.neutral800};
       box-sizing: border-box;
     }
+
     strong {
       font-weight: bold;
     }
+
     em {
       font-style: italic;
     }
+
     ul,
     ol {
       margin-left: 1rem;
       padding: 0 1rem;
+
       li {
         margin-bottom: 0.5rem;
         &:last-child {
@@ -41,40 +59,49 @@ export default styled(Box)`
         }
       }
     }
+
     ul {
       li {
         list-style: disc;
       }
     }
+
     ol {
       li {
         list-style: decimal;
       }
     }
+
     h1 {
       font-size: 2em;
     }
+
     h2 {
       font-size: 1.75em;
     }
+
     h3 {
       font-size: 1.5em;
     }
+
     h4 {
       font-size: 1.25em;
     }
+
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-      line-height: 1.1;
+      line-height: ${({ theme }) => theme.lineHeights[0]};
     }
+
     code {
       background-color: rgba(#616161, 0.1);
       color: #616161;
     }
+
     pre {
       background: #0d0d0d;
       color: #fff;
@@ -88,20 +115,24 @@ export default styled(Box)`
         font-size: 0.8rem;
       }
     }
+
     img {
       max-width: 100%;
       height: auto;
       display: block;
     }
+
     blockquote {
       padding-left: 1rem;
-      border-left: 2px solid rgba(#0d0d0d, 0.1);
+      border-left: 2px solid ${({ theme }) => rgba(theme.colors.primary600, 0.1)};
     }
+
     hr {
       border: 0;
       border-top: 2px solid rgba(13, 13, 13, 0.1);
       margin: 1rem 0;
     }
+
     table {
       width: 100%;
       table-layout: fixed;

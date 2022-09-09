@@ -52,24 +52,27 @@ function Wysiwyg({
       <Typography variant="pi" textColor="danger600">
         {formatMessage({
           id: getTrad('error.requestFailed'),
-          defaultMessage: 'Request failed'
-        })}: {(getSettingsError as Error).message}
+          defaultMessage: 'Request failed',
+        })}
+        : {(getSettingsError as Error).message}
       </Typography>
     );
   }
   return (
-    <WysiwygContent
-      name={name}
-      onChange={onChange}
-      value={value}
-      intlLabel={intlLabel}
-      labelAction={labelAction}
-      disabled={disabled}
-      error={error}
-      description={description}
-      required={required}
-      settings={settings}
-    />
+    <React.StrictMode>
+      <WysiwygContent
+        name={name}
+        onChange={onChange}
+        value={value}
+        intlLabel={intlLabel}
+        labelAction={labelAction}
+        disabled={disabled}
+        error={error}
+        description={description}
+        required={required}
+        settings={settings}
+      />
+    </React.StrictMode>
   );
 }
 
