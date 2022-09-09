@@ -2,7 +2,7 @@ import { prefixPluginTranslations } from '@strapi/helper-plugin';
 import pluginPkg from '../../package.json';
 import pluginId from '../../common/pluginId';
 import Initializer from './components/Initializer';
-import getTrad from './utils/getTrad';
+import getTrad from './utils/get-trad';
 import Wysiwyg from "./components/Wysiwyg";
 
 const name = pluginPkg.strapi.name;

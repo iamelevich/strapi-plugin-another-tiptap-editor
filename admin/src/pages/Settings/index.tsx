@@ -6,7 +6,7 @@ import React from 'react';
 import { Main } from '@strapi/design-system/Main';
 import { HeaderLayout, ContentLayout } from '@strapi/design-system/Layout';
 import { SettingsPageTitle } from '@strapi/helper-plugin';
-import getTrad from '../../utils/getTrad';
+import getTrad from '../../utils/get-trad';
 import { useIntl } from 'react-intl';
 
 const Settings: React.FunctionComponent = () => {

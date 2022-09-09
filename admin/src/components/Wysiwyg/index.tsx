@@ -9,7 +9,7 @@ import { Loader } from '@strapi/design-system/Loader';
 import { Typography } from '@strapi/design-system/Typography';
 import { useNotification } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
-import getTrad from '../../utils/getTrad';
+import getTrad from '../../utils/get-trad';
 
 function Wysiwyg({
   name,

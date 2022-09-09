@@ -11,6 +11,7 @@
     }
   },
   "error": {
-    "requestFailed": "Request failed"
+    "requestFailed": "Request failed",
+    "editorIniticialization": "Editor initialization failed"
   }
 }
