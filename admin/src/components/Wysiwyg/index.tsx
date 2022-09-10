@@ -1,18 +1,19 @@
-import { InferProps } from 'prop-types';
 import React from 'react';
-import { propTypes } from './props';
-import { useQuery } from 'react-query';
-import { defaultSettings } from '../../../../common/settings';
-import { getSettings } from '../../utils/api';
-import WysiwygContent from './content';
-import { Loader } from '@strapi/design-system/Loader';
-import { Typography } from '@strapi/design-system/Typography';
-import { useNotification } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
+import { useQuery } from 'react-query';
+import { WysiwygProps } from './types';
+import { getSettings } from '../../utils/api';
 import getTrad from '../../utils/get-trad';
 import pluginId from '../../../../common/pluginId';
+import { defaultSettings } from '../../../../common/settings';
+import WysiwygContent from './content';
 
-function Wysiwyg({
+// Design
+import { useNotification } from '@strapi/helper-plugin';
+import { Loader } from '@strapi/design-system/Loader';
+import { Typography } from '@strapi/design-system/Typography';
+
+const Wysiwyg: React.FC<WysiwygProps> = ({
   name,
   onChange,
   value,
@@ -22,11 +23,11 @@ function Wysiwyg({
   error,
   description,
   required,
-}: InferProps<typeof Wysiwyg.propTypes>): React.ReactElement {
+}) => {
   const toggleNotification = useNotification();
   const { formatMessage } = useIntl();
   const {
-    data: settingsFromDB,
+    data: settings,
     isLoading,
     isError,
     error: getSettingsError,
@@ -44,7 +45,6 @@ function Wysiwyg({
     },
     useErrorBoundary: false,
   });
-  const settings = { ...defaultSettings, ...settingsFromDB };
   if (isLoading) {
     return <Loader>Loading component...</Loader>;
   }
@@ -71,22 +71,10 @@ function Wysiwyg({
         error={error}
         description={description}
         required={required}
-        settings={settings}
+        settings={settings || defaultSettings}
       />
     </React.StrictMode>
   );
-}
-
-Wysiwyg.defaultProps = {
-  description: '',
-  disabled: false,
-  error: undefined,
-  intlLabel: '',
-  required: false,
-  value: '',
-  settings: {},
 };
-
-Wysiwyg.propTypes = propTypes;
 
 export default Wysiwyg;

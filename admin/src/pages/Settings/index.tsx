@@ -29,7 +29,7 @@ import TextSettings from './blocks/TextSettings';
 import GeneralSettings from './blocks/GeneralSettings';
 import pluginId from '../../../../common/pluginId';
 
-const Settings: React.FunctionComponent = () => {
+const Settings: React.FC = () => {
   const toggleNotification = useNotification();
   const { formatMessage } = useIntl();
   const queryClient = useQueryClient();

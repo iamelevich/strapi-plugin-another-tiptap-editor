@@ -22,6 +22,8 @@ type PluginSettings = {
   history: boolean;
   clearFormatting: boolean;
   clearNodes: boolean;
+
+  wordCount: boolean;
 };
 
 const defaultSettings: PluginSettings = {
@@ -39,6 +41,7 @@ const defaultSettings: PluginSettings = {
   strike: true,
   clearFormatting: true,
   clearNodes: true,
+  wordCount: true,
 };
 
 const availableOptions = {

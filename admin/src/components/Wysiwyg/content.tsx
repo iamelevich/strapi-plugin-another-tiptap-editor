@@ -1,25 +1,21 @@
-import { InferProps } from 'prop-types';
 import React from 'react';
-import { propTypes } from './props';
-import { useEditor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
-import { Box } from '@strapi/design-system/Box';
-import { Stack } from '@strapi/design-system/Stack';
 import { useIntl, MessageDescriptor } from 'react-intl';
-import {
-  Field,
-  FieldLabel,
-  FieldHint,
-  FieldError,
-  FieldInput,
-  FieldAction,
-} from '@strapi/design-system/Field';
-import { Typography } from '@strapi/design-system/Typography';
+import { WysiwygContentProps } from './types';
 import Editor from '../Editor';
 import getTrad from '../../utils/get-trad';
-import { PluginSettings } from '../../../../common/settings';
 
-function WysiwygContent({
+// Design
+import { Box } from '@strapi/design-system/Box';
+import { Stack } from '@strapi/design-system/Stack';
+import { FieldLabel } from '@strapi/design-system/Field';
+import { Typography } from '@strapi/design-system/Typography';
+
+// TipTap
+import { Extensions, useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import CharacterCount from '@tiptap/extension-character-count';
+
+const WysiwygContent: React.FC<WysiwygContentProps> = ({
   name,
   onChange,
   value,
@@ -30,31 +26,37 @@ function WysiwygContent({
   description,
   required,
   settings,
-}: InferProps<typeof WysiwygContent.propTypes> & { settings: PluginSettings }): React.ReactElement {
+}) => {
   const { formatMessage } = useIntl();
 
+  const extensions: Extensions = [
+    StarterKit.configure({
+      heading: {
+        levels: settings.headings,
+      },
+      bold: settings.bold ? undefined : false,
+      italic: settings.italic ? undefined : false,
+      strike: settings.strike ? undefined : false,
+
+      code: settings.code ? undefined : false,
+      codeBlock: settings.codeBlock ? undefined : false,
+
+      orderedList: settings.orderedList ? undefined : false,
+      bulletList: settings.bulletList ? undefined : false,
+
+      blockquote: settings.blockquote ? undefined : false,
+      hardBreak: settings.hardBreak ? undefined : false,
+      horizontalRule: settings.horizontalRule ? undefined : false,
+      history: settings.history ? undefined : false,
+    }),
+  ];
+
+  if (settings.wordCount) {
+    extensions.push(CharacterCount)
+  }
+
   const editor = useEditor({
-    extensions: [
-      StarterKit.configure({
-        heading: {
-          levels: settings.headings,
-        },
-        bold: settings.bold ? undefined : false,
-        italic: settings.italic ? undefined : false,
-        strike: settings.strike ? undefined : false,
-
-        code: settings.code ? undefined : false,
-        codeBlock: settings.codeBlock ? undefined : false,
-
-        orderedList: settings.orderedList ? undefined : false,
-        bulletList: settings.bulletList ? undefined : false,
-
-        blockquote: settings.blockquote ? undefined : false,
-        hardBreak: settings.hardBreak ? undefined : false,
-        horizontalRule: settings.horizontalRule ? undefined : false,
-        history: settings.history ? undefined : false,
-      }),
-    ],
+    extensions,
     content: value,
     onUpdate(ctx) {
       onChange({ target: { name, value: ctx.editor.getHTML() } });
@@ -95,8 +97,6 @@ function WysiwygContent({
       )}
     </Stack>
   );
-}
-
-WysiwygContent.propTypes = propTypes;
+};
 
 export default WysiwygContent;

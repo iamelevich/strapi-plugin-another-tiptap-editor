@@ -20,6 +20,8 @@
   "settings.general.clearFormatting.hint": "Should clear formatting be available in editor?",
   "settings.general.clearNodes.label": "Clear Nodes",
   "settings.general.clearNodes.hint": "Should clear nodes be available in editor?",
+  "settings.general.wordCount.label": "Word Count",
+  "settings.general.wordCount.hint": "Show word counter at the bottom of the editor",
 
   "settings.text.title": "Text settings",
   "settings.text.heading.label": "Headings",
@@ -61,5 +63,7 @@
   "editor.toolbar.horizontalRule": "Horizontal Rule",
   "editor.toolbar.hardBreak": "Hard Break",
   "editor.toolbar.undo": "Undo",
-  "editor.toolbar.redo": "Redo"
+  "editor.toolbar.redo": "Redo",
+
+  "editor.wordCount": "{words, plural, =0 {no words} one {# word} other {# words}}"
 }

@@ -103,6 +103,23 @@ const layout = [
       s: 12,
     },
   },
+  {
+    intlLabel: {
+      id: getTrad('settings.general.wordCount.label'),
+      defaultMessage: 'Word Count',
+    },
+    description: {
+      id: getTrad('settings.general.wordCount.hint'),
+      defaultMessage:
+        'Show word counter at the bottom of the editor',
+    },
+    name: 'wordCount',
+    type: 'bool',
+    size: {
+      col: 6,
+      s: 12,
+    },
+  },
 ];
 
 export default layout;

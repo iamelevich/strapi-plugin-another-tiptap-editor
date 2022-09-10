@@ -1,32 +1,32 @@
 import React from 'react';
-import { Editor } from '@tiptap/core';
 import { useIntl } from 'react-intl';
+import { Editor } from '@tiptap/core';
 import getTrad from '../../utils/get-trad';
 import { PluginSettings } from '../../../../common/settings';
+import { getSelectedTextStyle } from './utils/editor';
 
 // Icons
 import { VscFileCode, VscClearAll, VscHorizontalRule } from 'react-icons/vsc';
-import { AiOutlineRedo, AiOutlineUndo } from 'react-icons/ai';
 import { GrBlockQuote } from 'react-icons/gr';
-import { TbClearFormatting } from 'react-icons/tb';
 import { IoMdReturnLeft } from 'react-icons/io';
 
 // Design
 import { Box } from '@strapi/design-system/Box';
 import { Flex } from '@strapi/design-system/Flex';
-import { IconButton, IconButtonGroup } from '@strapi/design-system/IconButton';
-import TextStyleTool, { getSelectedTextStyle } from './tools/TextStyleTool';
+import { IconButton } from '@strapi/design-system/IconButton';
+
+// Tools
 import ListStyleTool from './tools/ListStyleTool';
 import HistoryTool from './tools/HistoryTool';
 import ClearTool from './tools/ClearTool';
+import TextStyleTool from './tools/TextStyleTool';
 
-function Toolbar({
-  editor,
-  settings,
-}: {
+type ToolbarProps = {
   editor: Editor;
   settings: PluginSettings;
-}): React.ReactElement | null {
+};
+
+const Toolbar: React.FC<ToolbarProps> = ({ editor, settings }) => {
   const { formatMessage } = useIntl();
 
   if (!editor) {
@@ -35,7 +35,7 @@ function Toolbar({
 
   return (
     <Box padding={2} className="toolbar">
-      <Flex justifyContent="flex-start" className='toolbar-flex' style={{ flexWrap: 'wrap' }}>
+      <Flex justifyContent="flex-start" className="toolbar-flex" style={{ flexWrap: 'wrap' }}>
         <TextStyleTool
           editor={editor}
           settings={settings}
@@ -89,6 +89,6 @@ function Toolbar({
       </Flex>
     </Box>
   );
-}
+};
 
 export default Toolbar;
