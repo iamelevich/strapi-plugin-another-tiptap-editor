@@ -17,6 +17,7 @@ import {
 import { Typography } from '@strapi/design-system/Typography';
 import Editor from '../Editor';
 import getTrad from '../../utils/get-trad';
+import { PluginSettings } from '../../../../common/settings';
 
 function WysiwygContent({
   name,
@@ -28,11 +29,32 @@ function WysiwygContent({
   error,
   description,
   required,
-}: InferProps<typeof WysiwygContent.propTypes>): React.ReactElement {
+  settings,
+}: InferProps<typeof WysiwygContent.propTypes> & { settings: PluginSettings }): React.ReactElement {
   const { formatMessage } = useIntl();
 
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit.configure({
+        heading: {
+          levels: settings.headings,
+        },
+        bold: settings.bold ? undefined : false,
+        italic: settings.italic ? undefined : false,
+        strike: settings.strike ? undefined : false,
+
+        code: settings.code ? undefined : false,
+        codeBlock: settings.codeBlock ? undefined : false,
+
+        orderedList: settings.orderedList ? undefined : false,
+        bulletList: settings.bulletList ? undefined : false,
+
+        blockquote: settings.blockquote ? undefined : false,
+        hardBreak: settings.hardBreak ? undefined : false,
+        horizontalRule: settings.horizontalRule ? undefined : false,
+        history: settings.history ? undefined : false,
+      }),
+    ],
     content: value,
     onUpdate(ctx) {
       onChange({ target: { name, value: ctx.editor.getHTML() } });
@@ -40,10 +62,14 @@ function WysiwygContent({
   });
 
   if (editor === null) {
-    return <Typography variant="pi">{formatMessage({
-      id: getTrad('error.editorIniticialization'),
-      defaultMessage: 'Editor initialization failed'
-    })}</Typography>;
+    return (
+      <Typography variant="pi">
+        {formatMessage({
+          id: getTrad('error.editorIniticialization'),
+          defaultMessage: 'Editor initialization failed',
+        })}
+      </Typography>
+    );
   }
 
   // Update content if value is changed outside (Mainly for i18n)
@@ -58,7 +84,7 @@ function WysiwygContent({
           {formatMessage(intlLabel as MessageDescriptor)}
         </FieldLabel>
       </Box>
-      <Editor editor={editor} />
+      <Editor editor={editor} settings={settings} />
       {error && (
         <Typography variant="pi" textColor="danger600">
           {formatMessage({ id: error, defaultMessage: error })}

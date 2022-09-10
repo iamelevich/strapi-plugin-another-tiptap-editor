@@ -16,10 +16,14 @@ export default styled(Box)`
     border: 1px solid ${({ theme }) => theme.colors.primary600};
   }
 
-  .toolbox {
+  .toolbar {
     .is-active {
       background: ${({ theme }) => theme.colors.primary200};
       color: ${({ theme }) => theme.colors.neutral0};
+    }
+
+    &-flex > * {
+      margin-right: 4px;
     }
   }
 

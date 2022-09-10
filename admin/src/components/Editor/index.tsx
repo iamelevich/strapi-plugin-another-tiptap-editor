@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { EditorContent } from '@tiptap/react';
-import Toolbar from './toolbar';
+import Toolbar from '../Toolbar';
 import StyledBox from './styles';
 
-function Editor({ editor }): React.ReactElement {
+function Editor({ editor, settings }): React.ReactElement {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -16,7 +16,7 @@ function Editor({ editor }): React.ReactElement {
         setIsFocused(false);
       }}
     >
-      <Toolbar editor={editor} />
+      <Toolbar editor={editor} settings={settings} />
       <EditorContent editor={editor} />
     </StyledBox>
   );

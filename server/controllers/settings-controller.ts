@@ -7,17 +7,19 @@ export default ({ strapi }: { strapi: Strapi }) => ({
     const savedSettings: PluginSettings | null = await strapi
       .store({ type: 'plugin', name: pluginId, key: 'settings' })
       .get();
-    if (savedSettings !== null) {
-      ctx.send(savedSettings);
-    } else {
-      ctx.send(defaultSettings);
-    }
+    ctx.send({
+      ...defaultSettings,
+      ...(savedSettings || {}),
+    });
   },
   async updateSettings(ctx) {
     const newSettings: PluginSettings = ctx.request.body;
-    await strapi
-      .store({ type: 'plugin', name: pluginId, key: 'settings' })
-      .set({ value: newSettings });
+    await strapi.store({ type: 'plugin', name: pluginId, key: 'settings' }).set({
+      value: {
+        ...defaultSettings,
+        ...newSettings,
+      },
+    });
     ctx.send({ success: true });
   },
 });

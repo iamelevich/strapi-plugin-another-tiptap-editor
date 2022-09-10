@@ -1,17 +1,65 @@
 {
   "plugin.description.long": "Replace build-in editor with TipTap",
   "plugin.description.short": "Replace build-in editor with TipTap",
-  "settings": {
-    "label": "Settings",
-    "section-label": "Another Tiptap Editor plugin"
-  },
-  "notification": {
-    "error": {
-      "getSettings": "Failed to get Wysiwyg editor settings"
-    }
-  },
-  "error": {
-    "requestFailed": "Request failed",
-    "editorIniticialization": "Editor initialization failed"
-  }
+
+  "settings.header": "Another Tiptap Editor",
+  "settings.title": "Another Tiptap Editor",
+  "settings.sectionLabel": "Another Tiptap Editor plugin",
+  "settings.menuLabel": "Settings",
+
+  "settings.general.title": "General settings",
+  "settings.general.blockquote.label": "Blockquote",
+  "settings.general.blockquote.hint": "Should blockquote option be available in editor?",
+  "settings.general.horizontalRule.label": "Horizontal Rule",
+  "settings.general.horizontalRule.hint": "Should horizontal rule be available in editor?",
+  "settings.general.hardBreak.label": "Hard Break",
+  "settings.general.hardBreak.hint": "Should hard break be available in editor?",
+  "settings.general.history.label": "History (Undo, Redo)",
+  "settings.general.history.hint": "Should history (undo, redo) be available in editor?",
+  "settings.general.clearFormatting.label": "Clear Formatting",
+  "settings.general.clearFormatting.hint": "Should clear formatting be available in editor?",
+  "settings.general.clearNodes.label": "Clear Nodes",
+  "settings.general.clearNodes.hint": "Should clear nodes be available in editor?",
+
+  "settings.text.title": "Text settings",
+  "settings.text.heading.label": "Headings",
+  "settings.text.heading.hint": "Heading sizes that will be available in your editor.",
+  "settings.text.heading.option": "Heading {heading}",
+  "settings.text.bold.label": "Bold",
+  "settings.text.bold.hint": "Should bold option be available in editor?",
+  "settings.text.italic.label": "Italic",
+  "settings.text.italic.hint": "Should italic option be available in editor?",
+  "settings.text.strike.label": "Strike",
+  "settings.text.strike.hint": "Should strike option be available in editor?",
+  "settings.text.code.label": "Inline Code",
+  "settings.text.code.hint": "Should inline code option be available in editor?",
+  "settings.text.codeBlock.label": "Code Block",
+  "settings.text.codeBlock.hint": "Should code block option be available in editor?",
+  "settings.text.orderedList.label": "Ordered List",
+  "settings.text.orderedList.hint": "Should ordered list option be available in editor?",
+  "settings.text.bulletList.label": "Bullet List",
+  "settings.text.bulletList.hint": "Should bullet list option be available in editor?",
+
+  "notification.error.getSettings": "Failed to get Wysiwyg editor settings",
+
+  "error.requestFailed": "Request failed",
+  "error.editorIniticialization": "Editor initialization failed",
+
+  "editor.toolbar.textStyle": "Text style",
+  "editor.toolbar.paragraph": "Paragraph",
+  "editor.toolbar.heading": "Heading",
+  "editor.toolbar.bold": "Bold",
+  "editor.toolbar.italic": "Italic",
+  "editor.toolbar.strike": "Strike",
+  "editor.toolbar.inlineCode": "Inline Code",
+  "editor.toolbar.bulletList": "Bullet List",
+  "editor.toolbar.orderedList": "Ordered List",
+  "editor.toolbar.blockquote": "Blockquote",
+  "editor.toolbar.codeBlock": "Code Block",
+  "editor.toolbar.clearFormatting": "Clear Formatting",
+  "editor.toolbar.clearNode": "Clear Node",
+  "editor.toolbar.horizontalRule": "Horizontal Rule",
+  "editor.toolbar.hardBreak": "Hard Break",
+  "editor.toolbar.undo": "Undo",
+  "editor.toolbar.redo": "Redo"
 }

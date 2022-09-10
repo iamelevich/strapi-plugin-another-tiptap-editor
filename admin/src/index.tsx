@@ -14,14 +14,14 @@ export default {
       {
         id: pluginId,
         intlLabel: {
-          id: getTrad('settings.section-label'),
+          id: getTrad('settings.sectionLabel'),
           defaultMessage: 'Another Tiptap Editor plugin',
         },
       },
       [
         {
           intlLabel: {
-            id: getTrad('settings.label'),
+            id: getTrad('settings.menuLabel'),
             defaultMessage: 'Settings',
           },
           id: 'settings',

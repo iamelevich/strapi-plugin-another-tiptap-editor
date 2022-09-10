@@ -10,6 +10,7 @@ import { Typography } from '@strapi/design-system/Typography';
 import { useNotification } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
 import getTrad from '../../utils/get-trad';
+import pluginId from '../../../../common/pluginId';
 
 function Wysiwyg({
   name,
@@ -29,7 +30,7 @@ function Wysiwyg({
     isLoading,
     isError,
     error: getSettingsError,
-  } = useQuery('settings', getSettings, {
+  } = useQuery(`${pluginId}-settings`, getSettings, {
     onError() {
       toggleNotification({
         // required
