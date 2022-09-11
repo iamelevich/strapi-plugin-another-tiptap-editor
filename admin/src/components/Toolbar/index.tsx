@@ -6,7 +6,7 @@ import { PluginSettings } from '../../../../common/settings';
 import { getSelectedTextStyle } from './utils/editor';
 
 // Icons
-import { VscFileCode, VscClearAll, VscHorizontalRule } from 'react-icons/vsc';
+import { VscHorizontalRule } from 'react-icons/vsc';
 import { GrBlockQuote } from 'react-icons/gr';
 import { IoMdReturnLeft } from 'react-icons/io';
 
@@ -20,6 +20,7 @@ import ListStyleTool from './tools/ListStyleTool';
 import HistoryTool from './tools/HistoryTool';
 import ClearTool from './tools/ClearTool';
 import TextStyleTool from './tools/TextStyleTool';
+import CodeBlockTool from './tools/CodeBlockTool';
 
 type ToolbarProps = {
   editor: Editor;
@@ -53,17 +54,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor, settings }) => {
             icon={<GrBlockQuote />}
           />
         ) : null}
-        {settings.codeBlock ? (
-          <IconButton
-            onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-            className={editor.isActive('codeBlock') ? 'is-active' : ''}
-            label={formatMessage({
-              id: getTrad('editor.toolbar.codeBlock'),
-              defaultMessage: 'Code Block',
-            })}
-            icon={<VscFileCode />}
-          />
-        ) : null}
+        <CodeBlockTool editor={editor} settings={settings} />
         <ClearTool editor={editor} settings={settings} />
         {settings.horizontalRule ? (
           <IconButton

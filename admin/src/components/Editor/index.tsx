@@ -3,11 +3,10 @@ import { Editor as TipTapEditor, EditorContent } from '@tiptap/react';
 import Toolbar from '../Toolbar';
 import StyledBox from './styles';
 import { PluginSettings } from '../../../../common/settings';
-
-import { Box } from '@strapi/design-system/Box';
 import { Typography } from '@strapi/design-system/Typography';
 import getTrad from '../../utils/get-trad';
 import { useIntl } from 'react-intl';
+import CodeBubbleMenu from './menus/CodeBubbleMenu';
 
 type EditorProps = {
   editor: TipTapEditor;
@@ -29,6 +28,7 @@ const Editor: React.FC<EditorProps> = ({ editor, settings }) => {
       }}
     >
       <Toolbar editor={editor} settings={settings} />
+      <CodeBubbleMenu editor={editor} settings={settings} />
       <EditorContent editor={editor} />
       {settings.wordCount ? (
         <Typography variant="delta" as="p" style={{ textAlign: 'right', padding: '4px 8px' }}>

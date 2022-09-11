@@ -58,6 +58,7 @@
   "editor.toolbar.orderedList": "Ordered List",
   "editor.toolbar.blockquote": "Blockquote",
   "editor.toolbar.codeBlock": "Code Block",
+  "editor.toolbar.codeLanguage": "Choose language",
   "editor.toolbar.clearFormatting": "Clear Formatting",
   "editor.toolbar.clearNode": "Clear Node",
   "editor.toolbar.horizontalRule": "Horizontal Rule",

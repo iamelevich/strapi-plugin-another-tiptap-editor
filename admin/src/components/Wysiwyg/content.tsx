@@ -3,6 +3,7 @@ import { useIntl, MessageDescriptor } from 'react-intl';
 import { WysiwygContentProps } from './types';
 import Editor from '../Editor';
 import getTrad from '../../utils/get-trad';
+import { lowlight } from 'lowlight/lib/all';
 
 // Design
 import { Box } from '@strapi/design-system/Box';
@@ -12,8 +13,26 @@ import { Typography } from '@strapi/design-system/Typography';
 
 // TipTap
 import { Extensions, useEditor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
 import CharacterCount from '@tiptap/extension-character-count';
+import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
+import Blockquote from '@tiptap/extension-blockquote';
+import BulletList from '@tiptap/extension-bullet-list';
+import Document from '@tiptap/extension-document';
+import HardBreak from '@tiptap/extension-hard-break';
+import Heading from '@tiptap/extension-heading';
+import HorizontalRule from '@tiptap/extension-horizontal-rule';
+import ListItem from '@tiptap/extension-list-item';
+import OrderedList from '@tiptap/extension-ordered-list';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
+import Bold from '@tiptap/extension-bold';
+import Italic from '@tiptap/extension-italic';
+import Strike from '@tiptap/extension-strike';
+import Code from '@tiptap/extension-code';
+import Dropcursor from '@tiptap/extension-dropcursor';
+import Gapcursor from '@tiptap/extension-gapcursor';
+import History from '@tiptap/extension-history';
+import Focus from '@tiptap/extension-focus';
 
 const WysiwygContent: React.FC<WysiwygContentProps> = ({
   name,
@@ -30,29 +49,84 @@ const WysiwygContent: React.FC<WysiwygContentProps> = ({
   const { formatMessage } = useIntl();
 
   const extensions: Extensions = [
-    StarterKit.configure({
-      heading: {
-        levels: settings.headings,
-      },
-      bold: settings.bold ? undefined : false,
-      italic: settings.italic ? undefined : false,
-      strike: settings.strike ? undefined : false,
-
-      code: settings.code ? undefined : false,
-      codeBlock: settings.codeBlock ? undefined : false,
-
-      orderedList: settings.orderedList ? undefined : false,
-      bulletList: settings.bulletList ? undefined : false,
-
-      blockquote: settings.blockquote ? undefined : false,
-      hardBreak: settings.hardBreak ? undefined : false,
-      horizontalRule: settings.horizontalRule ? undefined : false,
-      history: settings.history ? undefined : false,
+    Document,
+    Paragraph,
+    Text,
+    Dropcursor,
+    Gapcursor,
+    Heading.configure({
+      levels: settings.headings,
     }),
+    Focus,
   ];
 
+  // Setup Bold
+  if (settings.bold) {
+    extensions.push(Bold);
+  }
+
+  // Setup Italic
+  if (settings.italic) {
+    extensions.push(Italic);
+  }
+
+  // Setup Strike
+  if (settings.strike) {
+    extensions.push(Strike);
+  }
+
+  // Setup Code
+  if (settings.code) {
+    extensions.push(Code);
+  }
+
+  // Setup Blockquote
+  if (settings.blockquote) {
+    extensions.push(Blockquote);
+  }
+
+  // Setup BulletList
+  if (settings.bulletList) {
+    extensions.push(BulletList);
+  }
+
+  // Setup OrderedList
+  if (settings.orderedList) {
+    extensions.push(OrderedList);
+  }
+
+  // Setup ListItem
+  if (settings.bulletList || settings.orderedList) {
+    extensions.push(ListItem);
+  }
+
+  // Setup HardBreak
+  if (settings.hardBreak) {
+    extensions.push(HardBreak);
+  }
+
+  // Setup HorizontalRule
+  if (settings.horizontalRule) {
+    extensions.push(HorizontalRule);
+  }
+
+  // Setup word count feature
   if (settings.wordCount) {
-    extensions.push(CharacterCount)
+    extensions.push(CharacterCount);
+  }
+
+  // Setup Lowlight
+  if (settings.codeBlock) {
+    extensions.push(
+      CodeBlockLowlight.configure({
+        lowlight,
+      })
+    );
+  }
+
+  // Setup History
+  if (settings.history) {
+    extensions.push(History);
   }
 
   const editor = useEditor({
