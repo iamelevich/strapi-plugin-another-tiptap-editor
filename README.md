@@ -1,3 +1,3 @@
-# Strapi plugin strapi-plugin-another-tiptap-editor
+# Another TipTap Editor
 
-A quick description of strapi-plugin-another-tiptap-editor.
+This is plugin for [Strapi](https://strapi.io/). Work still in progress.

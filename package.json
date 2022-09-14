@@ -1,5 +1,5 @@
 {
-  "name": "strapi-plugin-another-tiptap-editor",
+  "name": "@iamelevich/strapi-plugin-another-tiptap-editor",
   "version": "0.0.1",
   "description": "Plugin for Strapi, that let use Tiptap instead of build-in Strapi editor",
   "license": "MIT",

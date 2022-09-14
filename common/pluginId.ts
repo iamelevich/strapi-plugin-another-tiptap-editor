@@ -1,5 +1,5 @@
 import packageJson from '../package.json';
 
-const pluginId = packageJson.name.replace(/^(@[^-,.][\w,-]+\/)?strapi-plugin-/i, '');
+const pluginId = packageJson.strapi.name;
 
 export default pluginId;
